@@ -55,7 +55,7 @@
     font-size:clamp(38px,6vw,64px); line-height:1.02; margin:0 0 16px; letter-spacing:-.01em;
   }
   .hero p.lead{
-    font-size:16.5px; line-height:1.65; color:#d5d8e0; max-width:600px; margin:0 0 40px;
+    font-size:16.5px; line-height:1.65; color:#d5d8e0; max-width:620px; margin:0 0 40px;
   }
   .hero-stats{display:flex; gap:0; border-top:1px solid rgba(255,255,255,.18); padding-top:24px; flex-wrap:wrap;}
   .stat{padding-right:36px; margin-right:36px; border-right:1px solid rgba(255,255,255,.18);}
@@ -65,14 +65,39 @@
 
   /* ---------- Layout ---------- */
   main{max-width:1000px; margin:0 auto; padding:0 32px 100px;}
-  .category{margin-top:70px;}
+  .category{margin-top:64px;}
   .category-head{display:flex; align-items:baseline; gap:14px; margin-bottom:8px; flex-wrap:wrap;}
   .stage-tag{
     font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em;
     color:var(--brass); background:var(--brass-soft); padding:4px 9px; border-radius:100px; white-space:nowrap;
   }
   .category h2{font-family:'Fraunces',serif; font-weight:500; font-size:26px; margin:0;}
-  .category p.intro{color:var(--ink-soft); font-size:14.5px; line-height:1.6; max-width:660px; margin:14px 0 30px;}
+  .category p.intro{color:var(--ink-soft); font-size:14.5px; line-height:1.6; max-width:660px; margin:14px 0 26px;}
+
+  /* ---------- Section-level accordion (Trip Status wrapper, Tag groups) ---------- */
+  details.section-accordion, details.tag-accordion{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    margin-bottom:14px; overflow:hidden;
+  }
+  summary.section-summary, summary.tag-summary{
+    cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px; user-select:none;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary.section-summary .s-left, summary.tag-summary .tag-left{
+    display:flex; align-items:baseline; gap:12px;
+  }
+  summary.section-summary h3, summary.tag-summary .tag-name{
+    font-family:'Fraunces',serif; font-weight:500; font-size:19px; margin:0; color:var(--ink);
+  }
+  .tag-meta, .section-meta{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);
+    background:var(--paper-2); border:1px solid var(--line); padding:3px 9px; border-radius:100px;
+  }
+  .chevron{width:16px; height:16px; stroke:var(--ink-soft); fill:none; stroke-width:2; transition:transform .2s ease; flex:none;}
+  details[open] > summary .chevron{transform:rotate(90deg);}
+  .section-body, .tag-body{padding:4px 24px 22px;}
+  .tag-body{padding:2px 20px 18px;}
 
   /* ---------- Card ---------- */
   .cards{display:flex; flex-direction:column; gap:18px;}
@@ -96,6 +121,17 @@
     font-size:13.5px; line-height:1.6; color:var(--ink-soft); margin:12px 0 6px;
     padding-left:14px; border-left:2px solid var(--line-soft);
   }
+
+  /* ---------- Individual workflow accordion (used inside Disney Cruise) ---------- */
+  details.wf-accordion{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+  }
+  summary.wf-summary{
+    cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between;
+    gap:16px; padding:20px 26px; flex-wrap:wrap; user-select:none;
+  }
+  .summary-right{display:flex; align-items:center; gap:12px;}
+  .wf-body{padding:0 28px 24px;}
 
   .group{margin-top:22px;}
   .group-title{
@@ -165,6 +201,8 @@
     .t-head.tasks{display:none;}
     .row.tasks{padding:12px 0;}
     .row.tasks .r-due, .row.tasks .r-reminder{padding-left:0;}
+    .section-body, .tag-body, .wf-body{padding-left:16px; padding-right:16px;}
+    summary.section-summary, summary.tag-summary, summary.wf-summary{padding:16px;}
   }
 </style>
 </head>
@@ -176,27 +214,33 @@
     <h1>Roquette Travel</h1>
     <p class="lead">The core workflow library — every task and automated email that runs behind a trip, from first quote to welcome-home note, listed with exactly what triggers it and when.</p>
     <div class="hero-stats">
-      <div class="stat"><div class="n">8</div><div class="l">Workflows</div></div>
-      <div class="stat"><div class="n">27</div><div class="l">Tasks</div></div>
-      <div class="stat"><div class="n">56</div><div class="l">Automations</div></div>
-      <div class="stat"><div class="n">3</div><div class="l">Trip stages</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">Workflows</div></div>
+      <div class="stat"><div class="n">57</div><div class="l">Tasks</div></div>
+      <div class="stat"><div class="n">104</div><div class="l">Automations</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">Tag groups</div></div>
     </div>
   </div>
 </header>
 
 <main>
 
-  <!-- ================= STAGE 1 — INTAKE ================= -->
   <section class="category">
     <div class="category-head">
-      <span class="stage-tag">STAGE 01</span>
-      <h2>Client Intake</h2>
+      <span class="stage-tag">STATUS-BASED</span>
+      <h2>All Trips</h2>
     </div>
-    <p class="intro">Fires the moment a trip enters quoting. Keeps the proposal moving and gets the traveler set up before anything is booked.</p>
+    <p class="intro">These three run off the trip's status rather than a tag — they apply automatically to every trip as it moves from quote to booked.</p>
 
-    <div class="cards">
-
-      <!-- Existing Client -->
+    <details class="section-accordion" open>
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Auto-Apply by Trip Status</h3>
+          <span class="section-meta">3 workflows</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+        <div class="cards">
       <article class="card">
         <div class="wf-head">
           <div class="wf-title-row">
@@ -235,8 +279,6 @@
           </div>
         </div>
       </article>
-
-      <!-- New Client -->
       <article class="card">
         <div class="wf-head">
           <div class="wf-title-row">
@@ -281,19 +323,6 @@
           </div>
         </div>
       </article>
-
-    </div>
-  </section>
-
-  <!-- ================= STAGE 2 — PAYMENTS ================= -->
-  <section class="category">
-    <div class="category-head">
-      <span class="stage-tag">STAGE 02</span>
-      <h2>Payments</h2>
-    </div>
-    <p class="intro">Applies to every trip once it's booked. One workflow covers insurance, balance reminders, and the final trip review before travelers leave.</p>
-
-    <div class="cards">
       <article class="card">
         <div class="wf-head">
           <div class="wf-title-row">
@@ -349,150 +378,26 @@
           </div>
         </div>
       </article>
-    </div>
+
+        </div>
+      </div>
+    </details>
   </section>
 
-  <!-- ================= STAGE 3 — DESTINATION ================= -->
   <section class="category">
     <div class="category-head">
-      <span class="stage-tag">STAGE 03</span>
-      <h2>Destination Workflows</h2>
+      <span class="stage-tag">TAG-BASED</span>
+      <h2>Auto-Apply by Tag</h2>
     </div>
-    <p class="intro">Layered on by trip tag once the product is known. Each one is tuned to what that trip type actually needs, from visa reminders to Lightning Lane nudges.</p>
+    <p class="intro">Layered on by trip tag once the product is known. Grouped by product line — expand a group to see every workflow tagged under it.</p>
 
-    <div class="cards">
-
-      <!-- Cruise -->
-      <article class="card">
-        <div class="wf-head">
-          <div class="wf-title-row">
-            <span class="wf-icon"><svg viewBox="0 0 24 24"><path d="M2 20c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"/><path d="M4 15l1-8h3l1 8"/><path d="M15 15V6l4 3"/></svg></span>
-            <h3>Cruise Booked</h3>
-          </div>
-          <span class="trigger-badge">Tag → <b>Cruise</b> <span class="auto-off">○ auto-apply off</span></span>
-        </div>
-        <p class="wf-desc">Covers the arc from 90 days before travel through the post-trip welcome-home note.</p>
-
-        <div class="group">
-          <div class="group-title">Tasks</div>
-          <div class="t-head tasks"><span>Task</span><span>Due date</span><span>Reminder</span></div>
-          <div class="row tasks"><span class="r-name">Send cruise line timeline email / add cruise line tag</span><span class="r-due">3 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
-          <div class="row tasks"><span class="r-name">Add trip-specific tasks as needed</span><span class="r-due">7 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
-          <div class="row tasks"><span class="r-name">Send quote for pre/post</span><span class="r-due">7 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
-          <div class="row tasks"><span class="r-name">Check if cruise is a Virtuoso Voyage</span><span class="r-due">7 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
-        </div>
-
-        <div class="group">
-          <div class="group-title">Automations</div>
-          <div class="t-head autos"><span>Automation</span><span>Trigger</span><span class="h-actions">Actions</span><span class="h-status">Status</span></div>
-          <div class="row autos">
-            <span class="r-name">Visa + Health reminder</span>
-            <span class="r-trigger">3 days after automation added</span>
-            <span class="r-actions">1 email · 0 tasks</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">Agent — Visa + Health reminder</span>
-            <span class="r-trigger">61 days before trip starts</span>
-            <span class="r-actions">0 emails · 1 task</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">Cruise 30-day</span>
-            <span class="r-trigger">30 days before trip starts</span>
-            <span class="r-actions">1 email · 0 tasks</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">Bon Voyage</span>
-            <span class="r-trigger">5 days before trip starts</span>
-            <span class="r-actions">1 email · 0 tasks</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">48-hour Flight Check-in Reminder</span>
-            <span class="r-trigger">2 days before trip starts</span>
-            <span class="r-actions">1 email · 0 tasks</span>
-            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">Agent — Welcome Home email</span>
-            <span class="r-trigger">5 days after trip ends</span>
-            <span class="r-actions">0 emails · 1 task</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-        </div>
-      </article>
-
-      <!-- FIT -->
-      <article class="card">
-        <div class="wf-head">
-          <div class="wf-title-row">
-            <span class="wf-icon"><svg viewBox="0 0 24 24"><path d="M10.5 21l1.5-6 8-4-1-2-8 2-4-6-2 1 2 6-6 2 1 2 6-1-2 5z"/></svg></span>
-            <h3>FIT Booked</h3>
-          </div>
-          <span class="trigger-badge">Tag → <b>FIT</b> <span class="auto-off">○ auto-apply off</span></span>
-        </div>
-        <p class="wf-desc">Visa + Health reminder sends to the client 3 days after the automation is added to the trip.</p>
-
-        <div class="group">
-          <div class="group-title">Tasks</div>
-          <div class="t-head tasks"><span>Task</span><span>Due date</span><span>Reminder</span></div>
-          <div class="row tasks"><span class="r-name">Flight bookings</span><span class="r-due">2 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
-          <div class="row tasks"><span class="r-name">Add trip tasks and unique tasks</span><span class="r-due">7 days after task creation</span><span class="r-reminder"><span class="reminder-on"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Sent on due date</span></span></div>
-          <div class="row tasks"><span class="r-name">Check final supplier docs</span><span class="r-due">22 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
-          <div class="row tasks"><span class="r-name">Send hotel booking confirmation letters</span><span class="r-due">7 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
-        </div>
-
-        <div class="group">
-          <div class="group-title">Automations</div>
-          <div class="t-head autos"><span>Automation</span><span>Trigger</span><span class="h-actions">Actions</span><span class="h-status">Status</span></div>
-          <div class="row autos">
-            <span class="r-name">Visa + Health reminder</span>
-            <span class="r-trigger">3 days after automation added</span>
-            <span class="r-actions">1 email · 0 tasks</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">Agent — Visa + Health reminder</span>
-            <span class="r-trigger">61 days before trip starts</span>
-            <span class="r-actions">0 emails · 1 task</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">60-Day Check-in</span>
-            <span class="r-trigger">60 days before trip starts</span>
-            <span class="r-actions">1 email · 0 tasks</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">Have a wonderful trip!</span>
-            <span class="r-trigger">5 days before trip starts</span>
-            <span class="r-actions">1 email · 0 tasks</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">48-hour Flight Check-in Reminder</span>
-            <span class="r-trigger">2 days before trip starts</span>
-            <span class="r-actions">1 email · 0 tasks</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">Arrival Day Check-In</span>
-            <span class="r-trigger">2 days after trip starts</span>
-            <span class="r-actions">1 email · 0 tasks</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-          <div class="row autos">
-            <span class="r-name">Agent — Welcome Home</span>
-            <span class="r-trigger">5 days after trip ends</span>
-            <span class="r-actions">0 emails · 1 task</span>
-            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
-          </div>
-        </div>
-      </article>
-
-      <!-- WDW <60 -->
+    <details class="tag-accordion" open>
+      <summary class="tag-summary">
+        <div class="tag-left"><span class="tag-name">WDW</span><span class="tag-meta">2 workflows</span></div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="tag-body">
+        <div class="cards">
       <article class="card">
         <div class="wf-head">
           <div class="wf-title-row">
@@ -550,8 +455,6 @@
           </div>
         </div>
       </article>
-
-      <!-- WDW 60+ -->
       <article class="card">
         <div class="wf-head">
           <div class="wf-title-row">
@@ -614,7 +517,167 @@
         </div>
       </article>
 
-      <!-- Universal -->
+        </div>
+      </div>
+    </details>
+
+    <details class="tag-accordion">
+      <summary class="tag-summary">
+        <div class="tag-left"><span class="tag-name">Cruise</span><span class="tag-meta">1 workflow</span></div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="tag-body">
+        <div class="cards">
+      <article class="card">
+        <div class="wf-head">
+          <div class="wf-title-row">
+            <span class="wf-icon"><svg viewBox="0 0 24 24"><path d="M2 20c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"/><path d="M4 15l1-8h3l1 8"/><path d="M15 15V6l4 3"/></svg></span>
+            <h3>Cruise Booked</h3>
+          </div>
+          <span class="trigger-badge">Tag → <b>Cruise</b> <span class="auto-off">○ auto-apply off</span></span>
+        </div>
+        <p class="wf-desc">Covers the arc from 90 days before travel through the post-trip welcome-home note.</p>
+
+        <div class="group">
+          <div class="group-title">Tasks</div>
+          <div class="t-head tasks"><span>Task</span><span>Due date</span><span>Reminder</span></div>
+          <div class="row tasks"><span class="r-name">Send cruise line timeline email / add cruise line tag</span><span class="r-due">3 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">Add trip-specific tasks as needed</span><span class="r-due">7 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">Send quote for pre/post</span><span class="r-due">7 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">Check if cruise is a Virtuoso Voyage</span><span class="r-due">7 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+        </div>
+
+        <div class="group">
+          <div class="group-title">Automations</div>
+          <div class="t-head autos"><span>Automation</span><span>Trigger</span><span class="h-actions">Actions</span><span class="h-status">Status</span></div>
+          <div class="row autos">
+            <span class="r-name">Visa + Health reminder</span>
+            <span class="r-trigger">3 days after automation added</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">Agent — Visa + Health reminder</span>
+            <span class="r-trigger">61 days before trip starts</span>
+            <span class="r-actions">0 emails · 1 task</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">Cruise 30-day</span>
+            <span class="r-trigger">30 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">Bon Voyage</span>
+            <span class="r-trigger">5 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">48-hour Flight Check-in Reminder</span>
+            <span class="r-trigger">2 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">Agent — Welcome Home email</span>
+            <span class="r-trigger">5 days after trip ends</span>
+            <span class="r-actions">0 emails · 1 task</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+        </div>
+      </article>
+
+        </div>
+      </div>
+    </details>
+
+    <details class="tag-accordion">
+      <summary class="tag-summary">
+        <div class="tag-left"><span class="tag-name">FIT</span><span class="tag-meta">1 workflow</span></div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="tag-body">
+        <div class="cards">
+      <article class="card">
+        <div class="wf-head">
+          <div class="wf-title-row">
+            <span class="wf-icon"><svg viewBox="0 0 24 24"><path d="M10.5 21l1.5-6 8-4-1-2-8 2-4-6-2 1 2 6-6 2 1 2 6-1-2 5z"/></svg></span>
+            <h3>FIT Booked</h3>
+          </div>
+          <span class="trigger-badge">Tag → <b>FIT</b> <span class="auto-off">○ auto-apply off</span></span>
+        </div>
+        <p class="wf-desc">Visa + Health reminder sends to the client 3 days after the automation is added to the trip.</p>
+
+        <div class="group">
+          <div class="group-title">Tasks</div>
+          <div class="t-head tasks"><span>Task</span><span>Due date</span><span>Reminder</span></div>
+          <div class="row tasks"><span class="r-name">Flight bookings</span><span class="r-due">2 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">Add trip tasks and unique tasks</span><span class="r-due">7 days after task creation</span><span class="r-reminder"><span class="reminder-on"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Sent on due date</span></span></div>
+          <div class="row tasks"><span class="r-name">Check final supplier docs</span><span class="r-due">22 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">Send hotel booking confirmation letters</span><span class="r-due">7 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+        </div>
+
+        <div class="group">
+          <div class="group-title">Automations</div>
+          <div class="t-head autos"><span>Automation</span><span>Trigger</span><span class="h-actions">Actions</span><span class="h-status">Status</span></div>
+          <div class="row autos">
+            <span class="r-name">Visa + Health reminder</span>
+            <span class="r-trigger">3 days after automation added</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">Agent — Visa + Health reminder</span>
+            <span class="r-trigger">61 days before trip starts</span>
+            <span class="r-actions">0 emails · 1 task</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">60-Day Check-in</span>
+            <span class="r-trigger">60 days before trip starts</span>
+            <span class="r-actions">1 email · 1 task</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">Have a wonderful trip!</span>
+            <span class="r-trigger">5 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">48-hour Flight Check-in Reminder</span>
+            <span class="r-trigger">2 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">Arrival Day Check-In</span>
+            <span class="r-trigger">2 days after trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">Agent — Welcome Home</span>
+            <span class="r-trigger">5 days after trip ends</span>
+            <span class="r-actions">0 emails · 1 task</span>
+            <span class="r-status"><span class="pill active"><span class="dot"></span>Active</span></span>
+          </div>
+        </div>
+      </article>
+
+        </div>
+      </div>
+    </details>
+
+    <details class="tag-accordion">
+      <summary class="tag-summary">
+        <div class="tag-left"><span class="tag-name">Universal</span><span class="tag-meta">1 workflow</span></div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="tag-body">
+        <div class="cards">
       <article class="card">
         <div class="wf-head">
           <div class="wf-title-row">
@@ -660,6 +723,384 @@
           </div>
         </div>
       </article>
+
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="category">
+    <div class="category-head">
+      <span class="stage-tag">PRODUCT LINE</span>
+      <h2>Disney Cruise</h2>
+    </div>
+    <p class="intro">DCL-specific tracks, kept separate from the generic Cruise tag above. Neither has an auto-apply trigger set yet — expand one to see the full ship-by-ship email sequence.</p>
+
+    <div class="cards">
+      <details class="wf-accordion">
+        <summary class="wf-summary">
+          <div class="wf-title-row">
+            <span class="wf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.1"/><line x1="12" y1="7.5" x2="12" y2="21"/><path d="M4.5 12a7.5 7.5 0 0 0 15 0"/><line x1="4.5" y1="12" x2="7" y2="12"/><line x1="19.5" y1="12" x2="17" y2="12"/></svg></span>
+            <h3>DCL First Timers Workflow</h3>
+          </div>
+          <div class="summary-right">
+            <span class="trigger-badge">No auto-apply trigger set <span class="auto-off">○ manual</span></span>
+            <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+        </summary>
+        <div class="wf-body">
+        <p class="wf-desc">The full-detail track for guests new to Disney Cruise Line — every ship-specific email plus the at-sea extras, ready to switch on when a Castaway Cay or Lookout Cay itinerary is confirmed.</p>
+          <div class="group">
+            <div class="group-title">Tasks</div>
+          <div class="t-head tasks"><span>Task</span><span>Due date</span><span>Reminder</span></div>
+          <div class="row tasks"><span class="r-name">DCL 02. Visiting Castaway Cay or Lookout Cay? ACTIVATE these automations</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 03. Which ship is your client sailing on? ACTIVATE the appropriate ship email</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 05. Have you noted any special occasions, medical, and/or dietary needs with DCL?</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">00. Double check your automation/task active &amp; due dates</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 04. CASTAWAY LEVEL: edit task timing for booking window and online check-in</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 01. Send Deposit Confirmation, Next Steps &amp; Vacation Planning Timeline email</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">00. Move trip to Booked status if you haven't already</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 06. Insurance? If package does not include insurance — send options</span><span class="r-due">2 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 07a. Send final payment reminder, booking window opening &amp; insurance decision</span><span class="r-due">104 days before trip start</span><span class="r-reminder"><span class="reminder-on"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Sent on due date</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 09. Send final itinerary, know before you go &amp; embarkation tips</span><span class="r-due">45 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 08. Double-check that amenities are showing and reservations linked (if a group)</span><span class="r-due">30 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 10. Add onboard gift (optional)</span><span class="r-due">21 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 11. Add post-trip follow-up workflow, if you want to work with them again</span><span class="r-due">7 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 07b. Send Paid in Full email</span><span class="r-due">No due date</span><span class="r-reminder"><span class="reminder-on"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Sent on due date</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 12. Did commission come in?</span><span class="r-due">45 days after trip end</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          </div>
+          <div class="group">
+            <div class="group-title">Automations — inactive</div>
+          <div class="t-head autos"><span>Automation</span><span>Trigger</span><span class="h-actions">Actions</span><span class="h-status">Status</span></div>
+          <div class="row autos">
+            <span class="r-name">DCL 04. Onboard Activities &amp; Port Adventures MC</span>
+            <span class="r-trigger">150 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 05. Magical Extras (Fish Extenders, Photo Packages, Character Experiences) MC</span>
+            <span class="r-trigger">145 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 06. Lookout Cay &amp; Lighthouse Point Info MC</span>
+            <span class="r-trigger">143 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 07. Castaway Cay Info MC</span>
+            <span class="r-trigger">140 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 08. Dining Rotational &amp; Adults-Only Dining MC</span>
+            <span class="r-trigger">140 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 10. Pre/post travel tips and getting to your cruise MC</span>
+            <span class="r-trigger">100 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 11. Disneylands &amp; paying for things at sea MC</span>
+            <span class="r-trigger">65 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 12. Coffee &amp; hydration at sea MC</span>
+            <span class="r-trigger">60 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 13. Packing list MC</span>
+            <span class="r-trigger">45 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 14. (Edit) online check-in tomorrow MC</span>
+            <span class="r-trigger">33 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 15. Royal Gathering opens tomorrow MC</span>
+            <span class="r-trigger">31 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 16. Placeholder booking offer MC</span>
+            <span class="r-trigger">16 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 17. Bon Voyage MC</span>
+            <span class="r-trigger">5 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 18. Embarkation day tips MC</span>
+            <span class="r-trigger">1 day before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 09. (Edit) booking window opens tomorrow MC</span>
+            <span class="r-trigger">Trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 19. Welcome Home MC</span>
+            <span class="r-trigger">3 days after trip ends</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 00. Insurance — initial prompt after deposit MC</span>
+            <span class="r-trigger">2 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 01. What's included &amp; must-do activities MC</span>
+            <span class="r-trigger">7 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Fantasy MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Wonder MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Dream MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Magic MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Wish MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Treasure MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 03. Navigator App &amp; Wi-Fi Info MC</span>
+            <span class="r-trigger">20 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          </div>
+        </div>
+      </details>
+      <details class="wf-accordion">
+        <summary class="wf-summary">
+          <div class="wf-title-row">
+            <span class="wf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.1"/><line x1="12" y1="7.5" x2="12" y2="21"/><path d="M4.5 12a7.5 7.5 0 0 0 15 0"/><line x1="4.5" y1="12" x2="7" y2="12"/><line x1="19.5" y1="12" x2="17" y2="12"/></svg></span>
+            <h3>DCL Streamlined Workflow</h3>
+          </div>
+          <div class="summary-right">
+            <span class="trigger-badge">No auto-apply trigger set <span class="auto-off">○ manual</span></span>
+            <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+        </summary>
+        <div class="wf-body">
+        <p class="wf-desc">A trimmed version of the First Timers track for repeat DCL guests — same core tasks, with the Coffee &amp; Hydration and Packing List touchpoints left out.</p>
+          <div class="group">
+            <div class="group-title">Tasks</div>
+          <div class="t-head tasks"><span>Task</span><span>Due date</span><span>Reminder</span></div>
+          <div class="row tasks"><span class="r-name">DCL 05. Have you noted any special occasions, medical, and/or dietary needs with DCL?</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 02. Visiting Castaway Cay or Lookout Cay? ACTIVATE these automations</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 03. Which ship is your client sailing on? ACTIVATE the appropriate ship email</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">00. Move trip to Booked status if you haven't already</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 04. CASTAWAY LEVEL: edit task timing for booking window and online check-in</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 01. Send Deposit Confirmation, Next Steps &amp; Vacation Planning Timeline email</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">00. Double check your automation/task active &amp; due dates</span><span class="r-due">0 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 06. Insurance? If package does not include insurance — send options</span><span class="r-due">2 days after task creation</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 07a. Send final payment reminder, booking window opening &amp; insurance decision</span><span class="r-due">104 days before trip start</span><span class="r-reminder"><span class="reminder-on"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Sent on due date</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 09. Send final itinerary, know before you go &amp; embarkation tips</span><span class="r-due">45 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 08. Double-check that amenities are showing and reservations linked (if a group)</span><span class="r-due">30 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 10. Add onboard gift (optional)</span><span class="r-due">21 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 11. Add post-trip follow-up workflow, if you want to work with them again</span><span class="r-due">7 days before trip start</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 07b. Send Paid in Full email</span><span class="r-due">No due date</span><span class="r-reminder"><span class="reminder-on"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Sent on due date</span></span></div>
+          <div class="row tasks"><span class="r-name">DCL 12. Did commission come in?</span><span class="r-due">45 days after trip end</span><span class="r-reminder"><span class="reminder-off"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg>No reminder</span></span></div>
+          </div>
+          <div class="group">
+            <div class="group-title">Automations — inactive</div>
+          <div class="t-head autos"><span>Automation</span><span>Trigger</span><span class="h-actions">Actions</span><span class="h-status">Status</span></div>
+          <div class="row autos">
+            <span class="r-name">DCL 04. Onboard Activities &amp; Port Adventures MC</span>
+            <span class="r-trigger">150 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 05. Magical Extras (Fish Extenders, Photo Packages, Character Experiences) MC</span>
+            <span class="r-trigger">145 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 06. Lookout Cay &amp; Lighthouse Point Info MC</span>
+            <span class="r-trigger">143 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 07. Castaway Cay Info MC</span>
+            <span class="r-trigger">140 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 08. Dining Rotational &amp; Adults-Only Dining MC</span>
+            <span class="r-trigger">140 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 10. Pre/post travel tips and getting to your cruise MC</span>
+            <span class="r-trigger">100 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 11. Disneylands &amp; paying for things at sea MC</span>
+            <span class="r-trigger">65 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 14. (Edit) online check-in tomorrow MC</span>
+            <span class="r-trigger">33 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 15. Royal Gathering opens tomorrow MC</span>
+            <span class="r-trigger">31 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 16. Placeholder booking offer MC</span>
+            <span class="r-trigger">16 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 17. Bon Voyage MC</span>
+            <span class="r-trigger">5 days before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 18. Embarkation day tips MC</span>
+            <span class="r-trigger">1 day before trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 09. (Edit) booking window opens tomorrow MC</span>
+            <span class="r-trigger">Trip starts</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 19. Welcome Home MC</span>
+            <span class="r-trigger">3 days after trip ends</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 00. Insurance — initial prompt after deposit MC</span>
+            <span class="r-trigger">2 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 01. What's included &amp; must-do activities MC</span>
+            <span class="r-trigger">7 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Dream MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Magic MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Fantasy MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Wish MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Treasure MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 02. About the Disney Wonder MC</span>
+            <span class="r-trigger">14 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          <div class="row autos">
+            <span class="r-name">DCL 03. Navigator App &amp; Wi-Fi Info MC</span>
+            <span class="r-trigger">20 days after trip status changes</span>
+            <span class="r-actions">1 email · 0 tasks</span>
+            <span class="r-status"><span class="pill inactive"><span class="dot"></span>Inactive</span></span>
+          </div>
+          </div>
+        </div>
+      </details>
 
     </div>
   </section>
