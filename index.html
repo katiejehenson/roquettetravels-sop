@@ -1105,6 +1105,731 @@
     </div>
   </section>
 
+
+  <!-- ===================== EMAIL TEMPLATE LIBRARY (added Nov 25, 2026) ===================== -->
+  <style>
+    .etl-row{display:grid; grid-template-columns:1.25fr 1.35fr 1.6fr; gap:14px; padding:13px 0; border-bottom:1px solid var(--line-soft); font-size:13.5px; align-items:start;}
+    .etl-row:last-child{border-bottom:none;}
+    .etl-head{display:grid; grid-template-columns:1.25fr 1.35fr 1.6fr; gap:14px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#a5abb8; padding:12px 0 6px; border-bottom:1px solid var(--line);}
+    .etl-name{color:var(--ink); line-height:1.4; font-weight:600;}
+    .etl-folder{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:400; color:var(--ink-soft); margin-top:3px;}
+    .etl-subj{color:var(--ink); line-height:1.45;}
+    .etl-purpose{display:block; color:var(--ink-soft); font-size:12.5px; margin-top:3px;}
+    .etl-use{display:flex; flex-direction:column; gap:6px;}
+    .etl-use-item{display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; font-size:12.5px; line-height:1.35;}
+    .etl-use-item .r-trigger{font-size:11.5px;}
+    .etl-manual{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--inactive);}
+    .etl-notes{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; padding-top:10px;}
+    .etl-note{background:var(--paper-2); border:1px solid var(--line); border-radius:10px; padding:14px 16px;}
+    .etl-note h4{font-family:'Fraunces',serif; font-weight:500; font-size:16px; margin:0 0 6px;}
+    .etl-note p{margin:0; font-size:13px; line-height:1.6; color:var(--ink-soft);}
+    .etl-stats{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 22px;}
+    .etl-stat{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:10px 16px;}
+    .etl-stat .n{font-family:'Fraunces',serif; font-size:24px; font-weight:500;}
+    .etl-stat .l{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);}
+    @media (max-width:640px){
+      .etl-head{display:none;}
+      .etl-row{grid-template-columns:1fr; gap:6px;}
+    }
+  </style>
+
+  <section class="category" id="email-templates">
+    <div class="category-head">
+      <span class="stage-tag">EMAIL LIBRARY</span>
+      <h2>Email Template Library</h2>
+    </div>
+    <p class="intro">Every template in Library › Email Templates › My Templates (the Destinations folder is not included), grouped by the point in the trip where it’s used, with the workflow and timing that sends it. Templates marked “Manual send” aren’t in any workflow; send them from the trip when needed.</p>
+    <div class="etl-stats">
+      <div class="etl-stat"><div class="n">113</div><div class="l">Templates</div></div>
+      <div class="etl-stat"><div class="n">54</div><div class="l">Used in a workflow</div></div>
+      <div class="etl-stat"><div class="n">59</div><div class="l">Manual send</div></div>
+      <div class="etl-stat"><div class="n">41 / 55</div><div class="l">Workflow emails active / inactive</div></div>
+    </div>
+
+    <details class="section-accordion">
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Inquiry &amp; Lead</h3>
+          <span class="section-meta">2 templates · 0 in workflows</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+          <div class="etl-head"><span>Template · folder</span><span>Subject · purpose</span><span>Sent by</span></div>
+          <div class="etl-row">
+            <span class="etl-name">Polite Decline (at capacity)<span class="etl-folder">Manual Send Emails › Decline</span></span>
+            <span class="etl-subj">Thank you for your inquiry<span class="etl-purpose">Declines an inquiry because the advisor is at capacity.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Polite Decline (low budget)<span class="etl-folder">Manual Send Emails › Decline</span></span>
+            <span class="etl-subj">Thank you for your inquiry<span class="etl-purpose">Declines an inquiry that doesn&#x27;t fit the budget.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+      </div>
+    </details>
+
+    <details class="section-accordion" open>
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Discovery &amp; Engagement</h3>
+          <span class="section-meta">5 templates · 3 in workflows</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+          <div class="etl-head"><span>Template · folder</span><span>Subject · purpose</span><span>Sent by</span></div>
+          <div class="etl-row">
+            <span class="etl-name">Client Profile - Existing<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Quick Update: Please Complete Your Traveler Profile<span class="etl-purpose">Asks returning clients to update their Traveler Profile form.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Existing Client Planning Workflow</span><span class="r-trigger">2 days after Automation added</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">New Client | Profile Update<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Let’s Get Your Traveler Details Finalized<span class="etl-purpose">Asks new clients to complete their traveler details before planning starts.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>New Client Planning Workflow</span><span class="r-trigger">1 day after Automation added</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Quote In Progress: Create a Tern Account<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">What&#x27;s the next step? Enter Tern–Trip Central<span class="etl-purpose">Invites the client to create a Tern account while the quote is being built.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>New Client Planning Workflow</span><span class="r-trigger">2 days after Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Call recap email - delete line about fee invoice if no fee<span class="etl-folder">Manual Send Emails › Quoting / Proposal Sent</span></span>
+            <span class="etl-subj">Next Steps: Planning Fee &amp; Trip Recap<span class="etl-purpose">Consultation recap with planning-fee next step.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Tern Account<span class="etl-folder">Tern Instructions</span></span>
+            <span class="etl-subj">What&#x27;s the next step? Enter Tern–Trip Central<span class="etl-purpose">Invites the client to create a Tern account (manual version).</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+      </div>
+    </details>
+
+    <details class="section-accordion">
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Research &amp; Proposal</h3>
+          <span class="section-meta">5 templates · 0 in workflows</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+          <div class="etl-head"><span>Template · folder</span><span>Subject · purpose</span><span>Sent by</span></div>
+          <div class="etl-row">
+            <span class="etl-name">0 Cruise Trip Insurance- Travel Insured + Cruise Insurance Option<span class="etl-folder">Manual Send Emails › Insurance Quote</span></span>
+            <span class="etl-subj">Trip Insurance Quote<span class="etl-purpose">Travel Insured quote plus cruise-line insurance option (older version).</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">0 Cruise Trip Insurance- Travel Insured + Cruise Insurance Option<span class="etl-folder">Manual Send Emails › Insurance Quote</span></span>
+            <span class="etl-subj">Trip Insurance Quote and Your Coverage Decision<span class="etl-purpose">Travel Insured + cruise insurance quote with coverage decision (newer version).</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">0 Trip Insurance- Travel Insured<span class="etl-folder">Manual Send Emails › Insurance Quote</span></span>
+            <span class="etl-subj">Trip Insurance Quote<span class="etl-purpose">Travel Insured quote (older version).</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">NEW - 0 Trip Insurance- Travel Insured<span class="etl-folder">Manual Send Emails › Insurance Quote</span></span>
+            <span class="etl-subj">Trip Insurance Quote<span class="etl-purpose">Travel Insured quote (newer version).</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Send Client Proposal<span class="etl-folder">Manual Send Emails › Quoting / Proposal Sent</span></span>
+            <span class="etl-subj">Your Custom Travel Proposal is Ready!<span class="etl-purpose">Sends the personalized proposal.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+      </div>
+    </details>
+
+    <details class="section-accordion" open>
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Booking &amp; Payments</h3>
+          <span class="section-meta">51 templates · 19 in workflows</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+          <div class="etl-head"><span>Template · folder</span><span>Subject · purpose</span><span>Sent by</span></div>
+          <div class="etl-row">
+            <span class="etl-name">Proposal Approved<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Let’s Make It Official<span class="etl-purpose">Thanks the client for approving the proposal and points to payment authorization.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>New Client Planning Workflow</span><span class="r-trigger">Client approves trip</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Existing Client Planning Workflow</span><span class="r-trigger">Client approves trip</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Trip Insurance Request/Deny<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Why Travel Insurance Matters. Protect Your Trip &amp; Peace of Mind<span class="etl-purpose">Required insurance offer with accept/decline request.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>All Trips Payments Workflow</span><span class="r-trigger">1 day after Automation added</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Visa + Health<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Important: Visa &amp; Health Entry Requirements for Your Trip<span class="etl-purpose">Points the client to entry, visa and health requirement resources.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>FIT Booked (tag = FIT)</span><span class="r-trigger">3 days after Automation added</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Cruise Booked (tag=Cruise)</span><span class="r-trigger">3 days after Automation added</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Land &amp; Cruise (Tag = Land &amp; Sea)</span><span class="r-trigger">3 days after Automation added</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">1 Day Payment Due reminder<span class="etl-folder">Automated emails › Payment Reminders</span></span>
+            <span class="etl-subj">Friendly Reminder - Your Payment is Due<span class="etl-purpose">Payment-due reminder the day before.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>All Trips Payments Workflow</span><span class="r-trigger">1 day before Payment due</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">10 Day Payment Due reminder<span class="etl-folder">Automated emails › Payment Reminders</span></span>
+            <span class="etl-subj">Friendly Reminder: An Upcoming Payment Is Due<span class="etl-purpose">Payment-due reminder 10 days out.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>All Trips Payments Workflow</span><span class="r-trigger">10 days before Payment due</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Your payment is now past due<span class="etl-folder">Automated emails › Payment Reminders</span></span>
+            <span class="etl-subj">Friendly Reminder – Payment Now Past Due<span class="etl-purpose">Gentle past-due payment notice.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>All Trips Payments Workflow</span><span class="r-trigger">1 day after Payment due</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL What&#x27;s Included in your cruise MC<span class="etl-folder">Disney Cruise Line › Deposit / Full Payment Made</span></span>
+            <span class="etl-subj">What’s Included in Your Disney Cruise (and the Must-Book Extras!)<span class="etl-purpose">What&#x27;s included onboard and what to book early.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">7 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">7 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Navigator App and Onboard Wifi MC<span class="etl-folder">Disney Cruise Line › On-Trip Guides &amp; Tips</span></span>
+            <span class="etl-subj">Your Guide to the Navigator App &amp; Wi-Fi Onboard Disney Cruise Line<span class="etl-purpose">Navigator app and onboard Wi-Fi.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">30 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">30 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Initial Insurance Prompt MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Travel Insurance for Your Disney Cruise - Let’s Talk About It<span class="etl-purpose">Insurance prompt after the cruise is booked.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">2 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">2 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Dream MC<span class="etl-folder">Disney Cruise Line › Ships</span></span>
+            <span class="etl-subj">Ready to Set Sail on the Disney Dream? Let’s Dive In!<span class="etl-purpose">Ship guide: Disney Dream.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Fantasy MC<span class="etl-folder">Disney Cruise Line › Ships</span></span>
+            <span class="etl-subj">Ready to Sail on the Disney Fantasy? Here’s the Magic That Awaits!<span class="etl-purpose">Ship guide: Disney Fantasy.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Magic MC<span class="etl-folder">Disney Cruise Line › Ships</span></span>
+            <span class="etl-subj">Set Sail on the Disney Magic – Where Classic Disney Meets Timeless Adventure!<span class="etl-purpose">Ship guide: Disney Magic.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Treasure MC<span class="etl-folder">Disney Cruise Line › Ships</span></span>
+            <span class="etl-subj">Ready to Sail Into a Whole New World? Welcome Aboard the Disney Treasure!<span class="etl-purpose">Ship guide: Disney Treasure.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Wish MC<span class="etl-folder">Disney Cruise Line › Ships</span></span>
+            <span class="etl-subj">Ready for a Floating Fairytale? Welcome Aboard the Disney Wish!<span class="etl-purpose">Ship guide: Disney Wish.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Wonder MC<span class="etl-folder">Disney Cruise Line › Ships</span></span>
+            <span class="etl-subj">Setting Sail on the Disney Wonder? Here’s What You Need to Know!<span class="etl-purpose">Ship guide: Disney Wonder.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">14 days after Trip status changes</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 01 - Let&#x27;s Start Planning!<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - You&#x27;re Booked!<span class="etl-purpose">You&#x27;re booked: My Disney Experience link and what&#x27;s coming.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">Immediately when Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">Immediately when Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 02 - MagicMobile Service &amp; MagicBand+<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - MagicMobile Service &amp; MagicBand+<span class="etl-purpose">Choosing park entry: MagicMobile or MagicBand+.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">10 days after Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">2 days after Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 04 - Memory Maker<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Memory Maker<span class="etl-purpose">Memory Maker photo package.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">21 days after Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">21 days after Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 10.5 - Disney Dining Less than 60<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Disney Dining<span class="etl-purpose">Dining window is open now (bookings under 60 days).</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">4 days after Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Request for payment: CRUISE<span class="etl-folder">Cruise</span></span>
+            <span class="etl-subj">Let&#x27;s lock this cruise in, so you can focus on the fun stuff!<span class="etl-purpose">Cruise pricing review and payment request.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">AMA Deposit<span class="etl-folder">Cruise › AmaWaterways</span></span>
+            <span class="etl-subj">Your AMA river cruise is confirmed!<span class="etl-purpose">Deposit confirmation for AmaWaterways.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Celebrity Deposit<span class="etl-folder">Cruise › Celebrity</span></span>
+            <span class="etl-subj">Your Celebrity cruise is booked!<span class="etl-purpose">Deposit confirmation for Celebrity.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Celebrity Final Payment<span class="etl-folder">Cruise › Celebrity</span></span>
+            <span class="etl-subj">Your Celebrity cruise is paid in full! Let the countdown begin...<span class="etl-purpose">Paid-in-full confirmation for Celebrity.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Holland America Deposit<span class="etl-folder">Cruise › Holland America</span></span>
+            <span class="etl-subj">Your Holland America cruise is booked!<span class="etl-purpose">Deposit confirmation for Holland America.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Holland America Line Final Payment<span class="etl-folder">Cruise › Holland America</span></span>
+            <span class="etl-subj">Your Holland America cruise is paid in full!<span class="etl-purpose">Paid-in-full confirmation for Holland America.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Hurtigruten Deposit<span class="etl-folder">Cruise › Hurtigruten</span></span>
+            <span class="etl-subj">Your Hurtigruten Expedition is Confirmed<span class="etl-purpose">Deposit confirmation for Hurtigruten.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Hurtigruten Final Payment<span class="etl-folder">Cruise › Hurtigruten</span></span>
+            <span class="etl-subj">Your Hurtigruten Expedition is Paid In Full<span class="etl-purpose">Paid-in-full confirmation for Hurtigruten.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Norwegian Deposit<span class="etl-folder">Cruise › Norwegian</span></span>
+            <span class="etl-subj">Your Norwegian cruise is booked!<span class="etl-purpose">Deposit confirmation for Norwegian.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Norwegian Final Payment<span class="etl-folder">Cruise › Norwegian</span></span>
+            <span class="etl-subj">Your Norwegian cruise is paid in full! Let the countdown begin...<span class="etl-purpose">Paid-in-full confirmation for Norwegian.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Princess Deposit<span class="etl-folder">Cruise › Princess</span></span>
+            <span class="etl-subj">Your Princess cruise is booked!<span class="etl-purpose">Deposit confirmation for Princess.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Princess Final Payment<span class="etl-folder">Cruise › Princess</span></span>
+            <span class="etl-subj">Your Princess cruise is paid in full!<span class="etl-purpose">Paid-in-full confirmation for Princess.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">1 CONFIRMATION - RCCL<span class="etl-folder">Cruise › RCCL</span></span>
+            <span class="etl-subj">Your Royal Caribbean cruise is booked!<span class="etl-purpose">Deposit confirmation for Royal Caribbean.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">2 PAID IN FULL - RCCL<span class="etl-folder">Cruise › RCCL</span></span>
+            <span class="etl-subj">Next Step: Online Checkin<span class="etl-purpose">Paid-in-full confirmation and online check-in next step.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Royal Caribbean - Deposit Confirmation Email Template<span class="etl-folder">Cruise › RCCL</span></span>
+            <span class="etl-subj">Deposit Confirmation, Next Steps &amp; Vacation Planning Timeline<span class="etl-purpose">Longer deposit confirmation with planning timeline (has XXXX placeholders).</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Regent Deposit<span class="etl-folder">Cruise › Regent</span></span>
+            <span class="etl-subj">Your cruise is booked!<span class="etl-purpose">Deposit confirmation for Regent Seven Seas.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Regent Final Payment<span class="etl-folder">Cruise › Regent</span></span>
+            <span class="etl-subj">Your Regent Seven Seas cruise is paid in full!<span class="etl-purpose">Paid-in-full confirmation for Regent.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Seabourn Deposit<span class="etl-folder">Cruise › Seabourn</span></span>
+            <span class="etl-subj">Your Seabourn cruise is confirmed<span class="etl-purpose">Deposit confirmation for Seabourn.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Seabourn Final Payment<span class="etl-folder">Cruise › Seabourn</span></span>
+            <span class="etl-subj">Your Seabourn cruise is paid in full!<span class="etl-purpose">Paid-in-full confirmation for Seabourn.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Silversea Deposit<span class="etl-folder">Cruise › Silverseas</span></span>
+            <span class="etl-subj">Your Silversea cruise is confirmed!<span class="etl-purpose">Deposit confirmation for Silversea.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Silversea Final Payment<span class="etl-folder">Cruise › Silverseas</span></span>
+            <span class="etl-subj">Your Silversea cruise is paid in full!<span class="etl-purpose">Paid-in-full confirmation for Silversea.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Viking Deposit<span class="etl-folder">Cruise › Viking</span></span>
+            <span class="etl-subj">Your cruise is confirmed!<span class="etl-purpose">Deposit confirmation for Viking River.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Viking Final Payment<span class="etl-folder">Cruise › Viking</span></span>
+            <span class="etl-subj">Your cruise is paid in full!<span class="etl-purpose">Paid-in-full confirmation for Viking River.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Windstar Deposit<span class="etl-folder">Cruise › Windstar</span></span>
+            <span class="etl-subj">Your Windstar Cruise is confirmed!<span class="etl-purpose">Deposit confirmation for Windstar.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Deposit Paid MC<span class="etl-folder">Disney Cruise Line › Deposit / Full Payment Made</span></span>
+            <span class="etl-subj">Your Disney Cruise is Booked! Let’s Set Sail<span class="etl-purpose">Deposit-paid confirmation for Disney Cruise Line.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Paid in Full and Next Steps MC<span class="etl-folder">Disney Cruise Line › Deposit / Full Payment Made</span></span>
+            <span class="etl-subj">You’re Paid in Full: Let the Disney Cruise Fun Begin!<span class="etl-purpose">Paid-in-full confirmation with next steps.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Disney Cruise Line Deposit (2)<span class="etl-folder">Disney Cruise Line › Deposit / Full Payment Made</span></span>
+            <span class="etl-subj">Your Disney cruise is booked!<span class="etl-purpose">Older DCL deposit confirmation.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Disney Cruise Line Final Payment<span class="etl-folder">Disney Cruise Line › Deposit / Full Payment Made</span></span>
+            <span class="etl-subj">Your Disney cruise is paid in full! Let the countdown begin...<span class="etl-purpose">Older DCL paid-in-full confirmation.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DL 01 - Let&#x27;s Start Planning!<span class="etl-folder">Disneyland</span></span>
+            <span class="etl-subj">Disneyland - Let&#x27;s Start Planning!<span class="etl-purpose">Kicks off the Disneyland planning email series.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">10. Booking Confirmation<span class="etl-folder">Manual Send Emails › Booked</span></span>
+            <span class="etl-subj">Your Trip Is Booked!<span class="etl-purpose">Booking confirmation with link to confirmation details.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Ready for deposits<span class="etl-folder">Manual Send Emails › Deposit/ Payment Request</span></span>
+            <span class="etl-subj">Ready For Deposits!<span class="etl-purpose">Asks the client to create a Tern account and place the deposit.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Client Passport Request<span class="etl-folder">Manual Send Emails › Pre-departure</span></span>
+            <span class="etl-subj">Passport Information Request ✈️<span class="etl-purpose">Requests passport details to confirm arrangements.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+      </div>
+    </details>
+
+    <details class="section-accordion">
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Pre-Trip</h3>
+          <span class="section-meta">44 templates · 28 in workflows</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+          <div class="etl-head"><span>Template · folder</span><span>Subject · purpose</span><span>Sent by</span></div>
+          <div class="etl-row">
+            <span class="etl-name">30 Days Pre-Cruise<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Your Cruise: 30 Days and Counting...<span class="etl-purpose">30-day countdown check-in for cruise clients with final to-dos.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Cruise Booked (tag=Cruise)</span><span class="r-trigger">30 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">48 hour Flight Check-In Reminder<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Your Upcoming Vacation: Flight Check-In Reminder<span class="etl-purpose">Reminds travelers to check in online with their airline the day before departure.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>FIT Booked (tag = FIT)</span><span class="r-trigger">2 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Cruise Booked (tag=Cruise)</span><span class="r-trigger">2 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>Land &amp; Cruise (Tag = Land &amp; Sea)</span><span class="r-trigger">2 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">60-Day Check-In &amp; Profile Refresh<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Your Trip Is 60 Days Away: Let&#x27;s Finalize the Details<span class="etl-purpose">60-day check-in to confirm details and refresh the traveler profile.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>FIT Booked (tag = FIT)</span><span class="r-trigger">60 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Land &amp; Cruise (Tag = Land &amp; Sea)</span><span class="r-trigger">60 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Have a Wonderful Trip (all)<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Your trip is almost here!<span class="etl-purpose">Final send-off a few days before departure.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>FIT Booked (tag = FIT)</span><span class="r-trigger">5 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Land &amp; Cruise (Tag = Land &amp; Sea)</span><span class="r-trigger">5 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Trip Review email to book time<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Your Travel Documents Are Ready!<span class="etl-purpose">Shares travel documents and invites the client to book a trip-review call.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>New Client Planning Workflow</span><span class="r-trigger">22 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>Existing Client Planning Workflow</span><span class="r-trigger">22 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>Trip Status</span><span class="r-trigger">22 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Castaway Cay MC<span class="etl-folder">Disney Cruise Line › On-Trip Guides &amp; Tips</span></span>
+            <span class="etl-subj">Your Guide to Castaway Cay – Disney’s Private Island Paradise!<span class="etl-purpose">Guide to Castaway Cay.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">143 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">143 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Embarkation Tips MC<span class="etl-folder">Disney Cruise Line › On-Trip Guides &amp; Tips</span></span>
+            <span class="etl-subj">Embarkation Day Tips: Your Disney Cruise Starts Tomorrow!<span class="etl-purpose">Embarkation-day tips the day before sailing.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">1 day before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">1 day before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Lighthouse Point MC<span class="etl-folder">Disney Cruise Line › On-Trip Guides &amp; Tips</span></span>
+            <span class="etl-subj">Your Guide to Lookout Cay – Disney’s Brand-New Private Paradise!<span class="etl-purpose">Guide to Lookout Cay at Lighthouse Point.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">143 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">143 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Rotational Dining, Adult Dining and Extra Experiences MC<span class="etl-folder">Disney Cruise Line › On-Trip Guides &amp; Tips</span></span>
+            <span class="etl-subj">Disney Cruise Dining: What to Expect &amp; What to Book Early<span class="etl-purpose">Rotational and adults-only dining.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">140 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">140 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Sips at Sea MC<span class="etl-folder">Disney Cruise Line › On-Trip Guides &amp; Tips</span></span>
+            <span class="etl-subj">Your Caffeine (and Hydration) Guide at Sea!<span class="etl-purpose">Coffee and hydration options onboard.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">60 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Bon Voyage MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Bon Voyage! Your Disney Cruise Adventure Awaits!<span class="etl-purpose">Bon voyage send-off with last reminders.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">5 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">5 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Booking Window opens tomorrow MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Get Ready! Your Disney Cruise Activities Booking Opens Tomorrow!<span class="etl-purpose">Alert that the activity booking window opens tomorrow.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">Before Trip starts (days not set yet)</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">Before Trip starts (days not set yet)</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL DisneyBand+ and Spending at Sea MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Your DisneyBand+ &amp; Onboard Spending Guide<span class="etl-purpose">DisneyBand+ and paying for things onboard.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">85 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">85 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Extras, Fish Extenders, Characters and Photo Packages MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Magical Extras to Make Your Disney Cruise Even More Memorable<span class="etl-purpose">Fish extenders, character experiences and photo packages.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">145 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">145 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Getting to your cruise MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Let’s Talk Flights, Pre-Night Stays &amp; Getting to Your Disney Cruise<span class="etl-purpose">Flights, pre-night stays and port logistics.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">100 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">100 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Onboard Activities &amp; Port Adventures MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Time to Start Planning the Fun Part: Onboard Activities &amp; Port Adventures!<span class="etl-purpose">Planning onboard activities and port adventures.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">150 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">150 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Onboard Placeholder offer MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">How to Save on Your Next Disney Cruise - Before You Even Board!<span class="etl-purpose">Promotes buying an onboard placeholder for a future cruise.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">14 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">14 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Online Check in Tomorrow MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Your Disney Cruise Online Check-In Opens Tomorrow!<span class="etl-purpose">Online check-in opens tomorrow.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">33 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">33 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Packing List MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Packing Like a Pro for Your Disney Cruise!<span class="etl-purpose">Disney cruise packing tips.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">45 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Royal Gathering Reminder MC<span class="etl-folder">Disney Cruise Line › Pre-Trip</span></span>
+            <span class="etl-subj">Get Ready to Meet the Royals : Royal Gathering Opens Tomorrow!<span class="etl-purpose">Royal Gathering reservations open tomorrow.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">31 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">31 days before Trip starts</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW - 30 Days Pre Trip (added Trip link variable)<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">You&#x27;ll be on vacation in a month!<span class="etl-purpose">30-day countdown with trip link and to-dos.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">30 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 10.0 - Disney Dining<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Disney Dining<span class="etl-purpose">Dining window is almost open (60+ day bookings).</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">70 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 12 - Refillable Mugs &amp; Grocery Delivery<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Refillable Mugs &amp; Grocery Delivery<span class="etl-purpose">Refillable mugs and grocery delivery.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">8 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">8 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 15 - Strollers &amp; Scooters<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Strollers &amp; Scooters<span class="etl-purpose">Stroller and scooter (ECV) rentals.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">45 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">6 days after Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 17 - Packing Suggestions<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Packing Suggestions<span class="etl-purpose">WDW packing suggestions.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">28 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">28 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 18 - Airport Transportation<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Airport Transportation<span class="etl-purpose">Airport transportation options.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">50 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">5 days after Trip status changes</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 20 - Wishing you a magical vacation<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Wishing you a magical vacation!<span class="etl-purpose">Send-off the day before the trip.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">1 day before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">1 day before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 30 - Lightning Lane Multipass (add calendar link?)<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Lightning Lane Multi Pass<span class="etl-purpose">Lightning Lane Multi Pass explained.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">14 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">14 days before Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Mobile Passport Control<span class="etl-folder">(top level)</span></span>
+            <span class="etl-subj">Skip the Customs Line When You Get Home<span class="etl-purpose">Mobile Passport Control app for faster re-entry.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Glaveston Cruise Port Parking<span class="etl-folder">Cruise</span></span>
+            <span class="etl-subj">Galveston Port Parking<span class="etl-purpose">Recommends reserving Galveston port parking ahead of sailing.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Carnival Cruise App<span class="etl-folder">Cruise › Carnival</span></span>
+            <span class="etl-subj">Carnival Cruise App<span class="etl-purpose">How to set up and use the Carnival app before embarkation.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">EMBARKATION TIPS - RCCL MC<span class="etl-folder">Cruise › RCCL</span></span>
+            <span class="etl-subj">Embarkation Tips for your upcoming Royal Caribbean cruise<span class="etl-purpose">Final-countdown embarkation tips for Royal Caribbean.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Trip Docs &amp; Bag Tags - RCCL<span class="etl-folder">Cruise › RCCL</span></span>
+            <span class="etl-subj">Your Final Trip Documents &amp; Bag Tags<span class="etl-purpose">Sends final cruise documents and luggage tags.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Ultimate Packing List, Disney Style<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Disney Packing List<span class="etl-purpose">Disney packing list.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 05 - Magic Kingdom Park<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Magic Kingdom Park<span class="etl-purpose">Park guide: Magic Kingdom.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 06 - Epcot<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - EPCOT<span class="etl-purpose">Park guide: EPCOT.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 07 - Disney&#x27;s Hollywood Studios<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Disney&#x27;s Hollywood Studios<span class="etl-purpose">Park guide: Hollywood Studios.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 08 - Disney&#x27;s Animal Kingdom Theme Park<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Disney&#x27;s Animal Kingdom Theme Park<span class="etl-purpose">Park guide: Animal Kingdom.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 11 - Admin - Disney Dining Reminder<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Disney Dining Reminder!<span class="etl-purpose">Reminder that dining reservations open.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 13 - Disney Dining Reservations<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Disney Dining Reservations &amp; Check in<span class="etl-purpose">Confirms dining reservations made (fill-in blanks).</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW 31 - Admin - Lightning Lane Reminder<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Lightning Lane Reminder<span class="etl-purpose">Lightning Lane window opens tomorrow.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Flight Reservation Access<span class="etl-folder">Manual Send Emails › Pre-departure</span></span>
+            <span class="etl-subj">Accessing your flight reservation<span class="etl-purpose">How to access the flight reservation.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Transition to Tern account<span class="etl-folder">Tern Instructions</span></span>
+            <span class="etl-subj">Welcome to your new trip link - Tern account<span class="etl-purpose">Moves an existing client onto a Tern account before travel.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Universal Orlando 00 - Email Template<span class="etl-folder">Universal</span></span>
+            <span class="etl-subj">Universal Orlando - Planning Topic<span class="etl-purpose">Starter template for Universal Orlando planning emails.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+      </div>
+    </details>
+
+    <details class="section-accordion">
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Traveling</h3>
+          <span class="section-meta">1 templates · 1 in workflows</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+          <div class="etl-head"><span>Template · folder</span><span>Subject · purpose</span><span>Sent by</span></div>
+          <div class="etl-row">
+            <span class="etl-name">FIT - Arrival Day Check-in<span class="etl-folder">Automated emails</span></span>
+            <span class="etl-subj">Welcome - Your Journey Begins!<span class="etl-purpose">Welcome-on-arrival check-in sent while the client is traveling.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>FIT Booked (tag = FIT)</span><span class="r-trigger">2 days after Trip starts</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+      </div>
+    </details>
+
+    <details class="section-accordion">
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Post-Trip</h3>
+          <span class="section-meta">2 templates · 2 in workflows</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+          <div class="etl-head"><span>Template · folder</span><span>Subject · purpose</span><span>Sent by</span></div>
+          <div class="etl-row">
+            <span class="etl-name">DCL Welcome Home MC<span class="etl-folder">Disney Cruise Line › Post-Trip</span></span>
+            <span class="etl-subj">Welcome Home! Let’s Relive the Magic<span class="etl-purpose">Welcome-home and feedback after a Disney cruise.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>DCL First Timers Workflow</span><span class="r-trigger">3 days after Trip ends</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span><span class="etl-use-item"><span>DCL Streamlined Workflow</span><span class="r-trigger">3 days after Trip ends</span><span class="pill inactive"><span class="dot"></span>Inactive</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">WDW Welcome Home<span class="etl-folder">Disney- Walt Disney World</span></span>
+            <span class="etl-subj">Walt Disney World - Welcome Home!<span class="etl-purpose">Welcome home and feedback request.</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Walt Disney World Booked 60+ Days</span><span class="r-trigger">7 days after Trip ends</span><span class="pill active"><span class="dot"></span>Active</span></span><span class="etl-use-item"><span>Walt Disney World Booked &lt;60 Days</span><span class="r-trigger">7 days after Trip ends</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+      </div>
+    </details>
+
+    <details class="section-accordion">
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Relationship · Any Time</h3>
+          <span class="section-meta">3 templates · 1 in workflows</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+          <div class="etl-head"><span>Template · folder</span><span>Subject · purpose</span><span>Sent by</span></div>
+          <div class="etl-row">
+            <span class="etl-name">Passport<span class="etl-folder">Client Celebrations</span></span>
+            <span class="etl-subj">Important: Your Passport Expires Soon – Time to Renew!<span class="etl-purpose">Passport-renewal reminder (text says about 200 days before expiry).</span></span>
+            <span class="etl-use"><span class="etl-use-item"><span>Passport Expiration</span><span class="r-trigger">150 days before Passport expiration</span><span class="pill active"><span class="dot"></span>Active</span></span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Anniversary Email<span class="etl-folder">Client Celebrations</span></span>
+            <span class="etl-subj">Happy Anniversary!<span class="etl-purpose">Anniversary greeting.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+          <div class="etl-row">
+            <span class="etl-name">Happy Birthday<span class="etl-folder">Client Celebrations</span></span>
+            <span class="etl-subj">Happy Birthday!<span class="etl-purpose">Birthday greeting.</span></span>
+            <span class="etl-use"><span class="etl-manual">○ Manual send</span></span>
+          </div>
+      </div>
+    </details>
+
+    <details class="section-accordion">
+      <summary class="section-summary">
+        <div class="s-left">
+          <h3>Good to Know</h3>
+          <span class="section-meta">8 notes</span>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="section-body">
+        <div class="etl-notes"><div class="etl-note"><h4>Workflow emails are copies</h4><p>Each workflow automation keeps its own copy of the subject and body. Editing a template in the library doesn’t change the copy inside a workflow, so update both when wording changes.</p></div><div class="etl-note"><h4>Disney Cruise workflows are off</h4><p>DCL First Timers and DCL Streamlined have no auto-apply and every automation is inactive, so their 25 DCL templates only send once the workflow is applied and the automations are turned on. DCL 09 (booking window) has no day offset set yet.</p></div><div class="etl-note"><h4>Land &amp; Cruise isn’t running</h4><p>Auto-apply is off and all four emails are inactive. Its Visa + Health email uses slightly different wording from the library template.</p></div><div class="etl-note"><h4>Trip Review email</h4><p>Inactive in the New and Existing Client workflows but active in the Trip Status workflow, which applies to every new trip, so clients get it once, 22 days before travel.</p></div><div class="etl-note"><h4>Passport timing</h4><p>The Passport template says the passport expires “in about 200 days,” but the Passport Expiration automation sends it 150 days before expiry.</p></div><div class="etl-note"><h4>Emails with no library template</h4><p>“Thank you for your payment!” (All Trips Payments), “Bon Voyage!” (Cruise Booked, inactive) and the five Universal Studios Florida emails (inactive) were written directly in their workflows.</p></div><div class="etl-note"><h4>Similar templates</h4><p>Old/new pairs to review: the four Insurance Quote templates, Tern Account vs Quote In Progress (same subject), Disney Cruise Line Deposit (2)/Final Payment vs DCL Deposit Paid MC/Paid in Full MC. WDW 10.0 and 10.5 share a subject but serve different booking windows.</p></div><div class="etl-note"><h4>Fill-ins to check</h4><p>Royal Caribbean – Deposit Confirmation has XXXX placeholders, WDW 13 has a blank (_____), and Polite Decline (at capacity) opens “Hi E,” instead of a name variable.</p></div></div>
+      </div>
+    </details>
+  </section>
+  <!-- ===================== END EMAIL TEMPLATE LIBRARY ===================== -->
+
 </main>
 
 <footer>
